@@ -6,5 +6,10 @@ ThemeData kAppTheme = ThemeData(
   primaryColor: kPrimaryColor,
   accentColor: kAccentColor,
   highlightColor: kHighlightColor,
-  scaffoldBackgroundColor: kBackgroundColor
+  scaffoldBackgroundColor: kBackgroundColor,
+
+  textTheme: TextTheme(
+    headline4: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black),
+    headline5: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.black)
+  )
 );
