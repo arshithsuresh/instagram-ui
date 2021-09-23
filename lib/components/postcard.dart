@@ -45,7 +45,7 @@ class _PostCardState extends State<PostCard> {
               )),
           Container(
               constraints: BoxConstraints(maxHeight: 500),
-              child: Image(image: AssetImage('assets/profile/2.JPG'))),
+              child: Image(image: AssetImage('assets/posts/2.jpg'),fit: BoxFit.cover,)),
           Container(
             height: 48,
             child: Row(

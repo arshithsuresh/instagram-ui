@@ -24,7 +24,7 @@ Widget UserStory({profilePicture}) => Container(
                 child: ClipRRect(
                     borderRadius: BorderRadius.circular(24),
                     child: Image(
-                      image: AssetImage('assets/profile/3.JPG'),
+                      image: AssetImage('assets/profile/3.jpg'),
                       fit: BoxFit.cover,
                     )),
                 width: 70,

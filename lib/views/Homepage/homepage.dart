@@ -15,6 +15,7 @@ class _HomePageState extends State<HomePage> {
     ThemeData appTheme = Theme.of(context);
 
     return Scaffold(
+      appBar: HomeAppBar(),
       bottomNavigationBar: Container(
         height: 60,
         child: Row(
@@ -56,8 +57,7 @@ class _HomePageState extends State<HomePage> {
                   padding: EdgeInsets.zero),
               ProfileIcon(radius: 30, rightMargin: 0)
             ]),
-      ),
-      appBar: HomeAppBar,
+      ),      
       body: Container(
         child: SingleChildScrollView(
           child: Column(
