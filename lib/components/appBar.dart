@@ -14,7 +14,6 @@ AppBar HomeAppBar = AppBar(
           Icons.add_a_photo_rounded,
         ),
         onPressed: () {}),
-    IconButton(icon: Icon(Icons.message_rounded), onPressed: () {}),
-    IconButton(icon: Icon(Icons.message_rounded), onPressed: () {})
+    IconButton(icon: Icon(Icons.message_rounded), onPressed: () {}),    
   ],
 );

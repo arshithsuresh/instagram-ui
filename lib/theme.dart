@@ -6,10 +6,12 @@ ThemeData kAppTheme = ThemeData(
   primaryColor: kPrimaryColor,
   accentColor: kAccentColor,
   highlightColor: kHighlightColor,
-  scaffoldBackgroundColor: kBackgroundColor,
-
+  buttonTheme: ButtonThemeData(),
+  scaffoldBackgroundColor: kBackgroundColor,  
+  iconTheme: IconThemeData(color: Colors.black),  
   textTheme: TextTheme(
-    headline4: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black),
-    headline5: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.black)
+    headline4: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black,), //Usernames
+    headline5: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.black),
+    bodyText1: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.black)
   )
 );
