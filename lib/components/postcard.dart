@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:instagramui/components/profileicon.dart';
 
@@ -8,6 +9,12 @@ class PostCard extends StatefulWidget {
 
 class _PostCardState extends State<PostCard> {
   var viewFullPost = false;
+
+  List<String> images = [
+    'assets/posts/1.jpg',
+    'assets/posts/2.jpg',
+    'assets/posts/3.jpg'
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +52,13 @@ class _PostCardState extends State<PostCard> {
               )),
           Container(
               constraints: BoxConstraints(maxHeight: 500),
-              child: Image(image: AssetImage('assets/posts/2.jpg'),fit: BoxFit.cover,)),
+              child: CarouselSlider.builder(
+                  itemCount: images.length,
+                  options: CarouselOptions(initialPage: 0, height: 500,viewportFraction: 1,enableInfiniteScroll: false),
+                  itemBuilder: (context, index, pvindex){
+                    return Image(image: AssetImage(images[index]),fit: BoxFit.cover,);
+                  },
+                  )),
           Container(
             height: 48,
             child: Row(
@@ -247,8 +260,7 @@ class _PostCardState extends State<PostCard> {
                               contentPadding:
                                   EdgeInsets.only(top: 4, bottom: 0, left: 12),
                               border: OutlineInputBorder(
-                                borderSide: BorderSide.none
-                              ),
+                                  borderSide: BorderSide.none),
                               hintText: "Add a comment..."),
                         ))
                       ],

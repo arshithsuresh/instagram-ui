@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:instagramui/constants/constants.dart';
 
-AppBar HomeAppBar = AppBar(
+AppBar HomeAppBar() => AppBar(
   title: SvgPicture.asset(
     'assets/images/instagramtxt.svg',
     height: 42,
