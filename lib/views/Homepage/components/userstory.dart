@@ -5,7 +5,7 @@ Widget UserStory({profilePicture}) => Container(
         children: [
           Container(
             width: 70,
-            height: 70,
+            height: 80,
             constraints: BoxConstraints(maxHeight: 70, maxWidth: 70),
             padding: EdgeInsets.all(2),
             margin: EdgeInsets.only(left: 8, right: 8),
@@ -22,7 +22,7 @@ Widget UserStory({profilePicture}) => Container(
                 borderRadius: BorderRadius.circular(24)),
             child: Container(
                 child: ClipRRect(
-                    borderRadius: BorderRadius.circular(24),
+                    borderRadius: BorderRadius.circular(20),
                     child: Image(
                       image: AssetImage('assets/profile/3.jpg'),
                       fit: BoxFit.cover,
@@ -32,7 +32,7 @@ Widget UserStory({profilePicture}) => Container(
                 padding: EdgeInsets.all(2),
                 decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(24))),
+                    borderRadius: BorderRadius.circular(22))),
           ),
           Container(
               margin: EdgeInsets.only(top:4),

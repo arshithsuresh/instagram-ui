@@ -8,17 +8,33 @@ class PostCard extends StatefulWidget {
 }
 
 class _PostCardState extends State<PostCard> {
-  var viewFullPost = false;
+  bool liked = false;
+  bool viewFullPost = false;
+  CarouselController _carouselController = new CarouselController();
+
+  void LikePost() {
+    setState(() {
+      liked = true;
+    });
+  }
+
+  void UnLikePost() {
+    setState(() {
+      liked = false;
+    });
+  }
 
   List<String> images = [
     'assets/posts/1.jpg',
     'assets/posts/2.jpg',
     'assets/posts/3.jpg'
   ];
+  int _selectedImage = 0;
 
   @override
   Widget build(BuildContext context) {
     ThemeData appTheme = Theme.of(context);
+    Size size = MediaQuery.of(context).size;
 
     return Container(
       margin: EdgeInsets.only(top: 8, bottom: 8),
@@ -53,12 +69,25 @@ class _PostCardState extends State<PostCard> {
           Container(
               constraints: BoxConstraints(maxHeight: 500),
               child: CarouselSlider.builder(
-                  itemCount: images.length,
-                  options: CarouselOptions(initialPage: 0, height: 500,viewportFraction: 1,enableInfiniteScroll: false),
-                  itemBuilder: (context, index, pvindex){
-                    return Image(image: AssetImage(images[index]),fit: BoxFit.cover,);
-                  },
-                  )),
+                itemCount: images.length,
+                carouselController: _carouselController,
+                options: CarouselOptions(
+                    onPageChanged: (index, reason) {
+                      setState(() {
+                        _selectedImage = index;
+                      });
+                    },
+                    initialPage: 0,
+                    aspectRatio: 1,
+                    viewportFraction: 1,
+                    enableInfiniteScroll: false),
+                itemBuilder: (context, index, pvindex) {
+                  return Image(
+                    image: AssetImage(images[index]),
+                    fit: BoxFit.cover,
+                  );
+                },
+              )),
           Container(
             height: 48,
             child: Row(
@@ -69,8 +98,16 @@ class _PostCardState extends State<PostCard> {
                   child: Row(
                     children: [
                       IconButton(
-                        icon: Icon(Icons.favorite_border),
-                        onPressed: () {},
+                        
+                        icon: Icon(
+                            liked ? Icons.favorite : Icons.favorite_border,
+                            color: liked? Colors.red:Colors.black,),
+                        onPressed: () {
+                          if (liked)
+                            UnLikePost();
+                          else
+                            LikePost();
+                        },
                         constraints: BoxConstraints(),
                         splashRadius: 10,
                       ),
@@ -92,38 +129,25 @@ class _PostCardState extends State<PostCard> {
                 Expanded(
                     flex: 1,
                     child: Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            width: 6,
-                            height: 6,
-                            margin: EdgeInsets.all(2),
-                            decoration: BoxDecoration(
-                              color: Colors.black,
-                              borderRadius: BorderRadius.circular(6),
-                            ),
-                          ),
-                          Container(
-                            width: 6,
-                            height: 6,
-                            margin: EdgeInsets.all(2),
-                            decoration: BoxDecoration(
-                              color: Colors.grey,
-                              borderRadius: BorderRadius.circular(6),
-                            ),
-                          ),
-                          Container(
-                            width: 6,
-                            height: 6,
-                            margin: EdgeInsets.all(2),
-                            decoration: BoxDecoration(
-                              color: Colors.grey,
-                              borderRadius: BorderRadius.circular(6),
-                            ),
-                          )
-                        ],
-                      ),
+                      alignment: Alignment.center,
+                      height: 10,
+                      child: ListView.builder(
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          itemCount: images.length,
+                          itemBuilder: (context, index) {
+                            return Container(
+                              width: 6,
+                              height: 6,
+                              margin: EdgeInsets.all(2),
+                              decoration: BoxDecoration(
+                                color: index == _selectedImage
+                                    ? Colors.black
+                                    : Colors.grey,
+                                borderRadius: BorderRadius.circular(6),
+                              ),
+                            );
+                          }),
                     )),
                 Expanded(
                   flex: 1,
