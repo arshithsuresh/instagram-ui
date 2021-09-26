@@ -98,10 +98,10 @@ class _PostCardState extends State<PostCard> {
                   child: Row(
                     children: [
                       IconButton(
-                        
                         icon: Icon(
-                            liked ? Icons.favorite : Icons.favorite_border,
-                            color: liked? Colors.red:Colors.black,),
+                          liked ? Icons.favorite : Icons.favorite_border,
+                          color: liked ? Colors.red : Colors.black,
+                        ),
                         onPressed: () {
                           if (liked)
                             UnLikePost();
